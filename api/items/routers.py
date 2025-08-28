@@ -27,3 +27,8 @@ async def list_all(
     skip: int = 0, limit: int = 50, db: AsyncSession = Depends(get_session)
 ):
     return await crud.list_items(db, skip=skip, limit=limit)
+
+
+@router.delete("/{item_id}", response_model=None, status_code=204)
+async def delete_item(item_id: int, db: AsyncSession = Depends(get_session)):
+    return await crud.delete_item(db, item_id)

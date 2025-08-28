@@ -23,3 +23,10 @@ async def list_items(
 ) -> list[models.Item]:
     res = await db.execute(select(models.Item).offset(skip).limit(limit))
     return list(res.scalars().all())
+
+
+async def delete_item(db: AsyncSession, item_id: int) -> None:
+    item = await get_item(db, item_id)
+    if item:
+        await db.delete(item)
+        await db.commit()
