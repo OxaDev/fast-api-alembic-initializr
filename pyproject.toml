@@ -1,0 +1,33 @@
+[project]
+name = "fastapi-proj"
+version = "0.1.0"
+description = "FastAPI + PostgreSQL + Alembic Starter"
+authors = [
+    { name = "Votre Nom", email = "votre@email.com" }
+]
+requires-python = ">=3.11"
+
+dependencies = [
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.30",
+    "SQLAlchemy>=2.0",
+    "asyncpg>=0.29",
+    "pydantic>=2.7",
+    "python-dotenv>=1.0",
+    "alembic>=1.16.5"
+]
+
+[project.optional-dependencies]
+dev = [
+    "dotenv-cli>=3.2.0",
+    "pre-commit>=3.7.0"
+]
+
+[tool.black]
+line-length = 88
+
+[tool.isort]
+profile = "black"
+
+[tool.flake8]
+max-line-length = 120
